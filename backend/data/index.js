@@ -1,3 +1,5 @@
+//use for one time data insert the database.
+
 import mongoose from "mongoose";
 
 const userIds = [
