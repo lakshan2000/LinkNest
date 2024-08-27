@@ -19,7 +19,9 @@ const PostsWidget = ({userId, isProfile= false}) => {
             }
         );
         const data= await res.json();
-        dispatch(setPosts({posts: data}))
+        // Sort posts by createdAt in descending order
+        const sortedPosts = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        dispatch(setPosts({ posts: sortedPosts }));
     }
 
     const getUserPosts= async () => {
@@ -31,7 +33,9 @@ const PostsWidget = ({userId, isProfile= false}) => {
             }
         );
         const data= await res.json();
-        dispatch(setPosts({posts: data}));
+        // Sort posts by createdAt in descending order
+        const sortedPosts = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        dispatch(setPosts({ posts: sortedPosts }));
     }
 
     useEffect(() => {
